@@ -14,10 +14,13 @@ import { deleteroute } from "./routes/deleteroute.js";
 
 const app = express();
 //CORS must come first always
+
 app.use(
   cors({
-    origin: "smart-expense-tracker-rosy.vercel.app",
+    origin: "https://smart-expense-tracker-rosy.vercel.app",
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 app.use(express.json());
