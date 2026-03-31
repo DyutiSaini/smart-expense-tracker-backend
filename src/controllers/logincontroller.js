@@ -2,6 +2,7 @@ import { User } from "../models/user.js";
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHnadler.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 // import cookieParser from "cookie-parser";
 
 const login = asyncHandler(async (req, res) => {
@@ -17,8 +18,21 @@ const login = asyncHandler(async (req, res) => {
   if (!ispasswordCorrect) {
     throw new ApiError(401, "Invalid credential");
   }
-  const accessToken = user.generateAccessToken();
-  const refreshToken = user.generateRefreshToken();
+  // const accessToken = user.generateAccessToken();
+  // const refreshToken = user.generateRefreshToken();
+
+  const accessToken = jwt.sign(
+    { id: user._id },
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: process.env.ACCESS_TOKEN_EXPIRY },
+  );
+
+  const refreshToken = jwt.sign(
+    { id: user._id },
+    process.env.REFRESH_TOKEN_SECRET,
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRY },
+  );
+
   const cookieOptions = {
     httpOnly: true,
     secure: false,
