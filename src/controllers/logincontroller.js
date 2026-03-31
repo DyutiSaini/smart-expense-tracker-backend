@@ -35,7 +35,8 @@ const login = asyncHandler(async (req, res) => {
 
   const cookieOptions = {
     httpOnly: true,
-    secure: false,
+    secure: true,
+    sameSite: "none",
   };
   res
     .status(200)

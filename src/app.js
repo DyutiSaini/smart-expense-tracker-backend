@@ -16,7 +16,7 @@ const app = express();
 //CORS must come first always
 app.use(
   cors({
-    origin: "http://127.0.0.1:5500",
+    origin: "smart-expense-tracker-noq36vdd7-dyutisainis-projects.vercel.app",
     credentials: true,
   }),
 );
