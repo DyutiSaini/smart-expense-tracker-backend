@@ -45,6 +45,6 @@ Backend API for the Smart Expense Tracker application built with Node.js, Expres
 ## Author
 
 **Dyuti Saini**
-B.Tech CSE (Artificial Intelligence)
+B.Tech CSE-AI
 
 Indira Gandhi Delhi Technical University for Women (IGDTUW)
